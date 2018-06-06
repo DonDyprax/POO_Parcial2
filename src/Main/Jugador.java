@@ -5,7 +5,9 @@
  */
 package Main;
 
+import Fabricas.AbstractFactory;
 import Fabricas.Estructuras.Estructura;
+import Fabricas.FactoryProducer;
 import Fabricas.Unidades.Unidad;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,7 +22,23 @@ public class Jugador {
     private ArrayList<Estructura> Estructuras = new ArrayList<>();
     private ArrayList<Unidad> Unidades = new ArrayList<>();
 
+    public ArrayList<Estructura> getEstructuras() {
+        return Estructuras;
+    }
+
+    public ArrayList<Unidad> getUnidades() {
+        return Unidades;
+    }
+       
+
     public Jugador() {
+        AbstractFactory factoryEstructura, factoryUnidad;
+    
+        factoryEstructura = FactoryProducer.getFactory("estructura");
+        factoryUnidad = FactoryProducer.getFactory("unidad");
+        
+        Estructuras.add(factoryEstructura.getEstructura("townCenter"));
+        
         this.oro = 200;
         this.madera = 200;
         this.metal = 200;
@@ -59,6 +77,7 @@ public class Jugador {
                         case 1:
                             System.out.println("Construir Estructura");
                             System.out.println("\n");
+                            Estructuras.clear();
                             break;
                         case 2:
                             System.out.println("Mostrar Estructuras");
@@ -73,7 +92,39 @@ public class Jugador {
                         default:
                             System.out.println("Elija una opcion valida");
                             System.out.println("\n");
-                    };
+                    }
+                    break;
+                case 2:
+                    System.out.println("====================" + "Turno de " + nombre + "====================");
+                    System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
+                    System.out.print("\n");
+                    System.out.println("1.) Entrenar Unidad");
+                    System.out.println("2.) Mostrar Unidades");
+                    System.out.println("3.) Enviar a atacar");
+                    System.out.println("4.) Atras");
+                    System.out.print("Elija una opcion: ");
+                    opcSec = leer.nextInt();
+                    System.out.println("\n");
+                    
+                    switch(opcSec){
+                        case 1:
+                            System.out.println("Entrenar Unidad");
+                            System.out.println("\n");
+                            break;
+                        case 2:
+                            System.out.println("Mostrar Unidades");
+                            System.out.println("\n");
+                            break;
+                        case 3:
+                            System.out.println("Enviar a atacar");
+                            System.out.println("\n");
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            System.out.println("Elija una opcion valida");
+                            System.out.println("\n");
+                    }
             }
         }
     }

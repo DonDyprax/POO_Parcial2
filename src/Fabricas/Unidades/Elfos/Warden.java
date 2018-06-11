@@ -5,6 +5,7 @@
  */
 package Fabricas.Unidades.Elfos;
 
+import Fabricas.Costo;
 import Fabricas.Unidades.Unidad;
 
 /**
@@ -13,4 +14,6 @@ import Fabricas.Unidades.Unidad;
  */
 public class Warden implements Unidad{
     private int vida, ataque;
+    private Costo costo;
+
 }

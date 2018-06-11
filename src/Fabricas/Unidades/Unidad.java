@@ -5,10 +5,12 @@
  */
 package Fabricas.Unidades;
 
+import Fabricas.Costo;
+
 /**
  *
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public interface Unidad {
-    
+
 }

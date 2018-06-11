@@ -55,6 +55,8 @@ public class Main {
             
             j1.realizarTurno();
             j2.realizarTurno();
+            
+            fase += 1;
         }
         
     }

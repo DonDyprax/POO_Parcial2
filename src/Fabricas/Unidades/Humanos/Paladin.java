@@ -5,6 +5,7 @@
  */
 package Fabricas.Unidades.Humanos;
 
+import Fabricas.Costo;
 import Fabricas.Unidades.Unidad;
 
 /**
@@ -13,4 +14,6 @@ import Fabricas.Unidades.Unidad;
  */
 public class Paladin implements Unidad{
     private int vida, ataque;
+    private Costo costo;
+
 }

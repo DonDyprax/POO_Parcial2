@@ -5,6 +5,7 @@
  */
 package Fabricas.Unidades.Elfos;
 
+import Fabricas.Costo;
 import Fabricas.Unidades.Unidad;
 
 /**
@@ -13,4 +14,7 @@ import Fabricas.Unidades.Unidad;
  */
 public class Huntress implements Unidad{
     private int vida, ataque;
+    private Costo costo;
+
 }
+

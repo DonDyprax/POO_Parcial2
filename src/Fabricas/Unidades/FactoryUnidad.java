@@ -13,6 +13,7 @@ import Fabricas.Unidades.Elfos.Warden;
 import Fabricas.Unidades.Humanos.Footman;
 import Fabricas.Unidades.Humanos.Militia;
 import Fabricas.Unidades.Humanos.Paladin;
+import Main.Main;
 
 
 /**
@@ -29,17 +30,17 @@ public class FactoryUnidad implements AbstractFactory{
     public Unidad getUnidad(String type) {
         switch (type) {
             case "druid":
-                return new Druid();
+                return new Druid(Main.fase);
             case "huntress":
-                return new Huntress();
+                return new Huntress(Main.fase);
             case "warden":
-                return new Warden();
+                return new Warden(Main.fase);
             case "footman":
-                return new Footman();
+                return new Footman(Main.fase);
             case "militia":
-                return new Militia();
+                return new Militia(Main.fase);
             case "paladin":
-                return new Paladin();
+                return new Paladin(Main.fase);
         }
         return null;
     }

@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fabricas.Unidades;
-
+package Fabricas.Estructuras;
 
 /**
  *
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
-public interface Unidad {
-    String getNombre();
-    int getFaseCreacion();
-    int getTiempoCreacion();
+public class Sawmill {
+    
 }

@@ -5,7 +5,7 @@
  */
 package Fabricas.Unidades.Elfos;
 
-import Fabricas.Costo;
+
 import Fabricas.Unidades.Unidad;
 
 /**
@@ -13,7 +13,28 @@ import Fabricas.Unidades.Unidad;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class Druid implements Unidad{
+    private final String nombre = "druid";
+    private boolean estaHabilitado = false;
     private int vida, ataque;
-    private Costo costo = new Costo(50, 50, 0);
+    private int faseCreacion, tiempoCreacion = 1;
+    
+    public Druid(int fase) {
+        this.faseCreacion = fase;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+    
+    @Override
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+    
+    @Override
+    public int getTiempoCreacion() {
+        return tiempoCreacion;
+    }
 
 }

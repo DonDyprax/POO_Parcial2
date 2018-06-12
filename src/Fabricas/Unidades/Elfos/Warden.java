@@ -5,7 +5,7 @@
  */
 package Fabricas.Unidades.Elfos;
 
-import Fabricas.Costo;
+
 import Fabricas.Unidades.Unidad;
 
 /**
@@ -13,7 +13,28 @@ import Fabricas.Unidades.Unidad;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class Warden implements Unidad{
+    private final String nombre = "warden";
+    private boolean estaHabilitado = false;
     private int vida, ataque;
-    private Costo costo;
+    private int faseCreacion, tiempoCreacion = 3;
+    
+    public Warden(int fase) {
+        this.faseCreacion = fase;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+    
+    @Override
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+    
+    @Override
+    public int getTiempoCreacion() {
+        return tiempoCreacion;
+    }
 
 }

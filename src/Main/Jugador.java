@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import Fabricas.Costo;
 import Fabricas.Unidades.CostoUnidades;
+import java.util.Iterator;
 
 
 /**
@@ -26,6 +27,7 @@ public class Jugador {
     private int oro, madera, metal;
     private ArrayList<Estructura> Estructuras = new ArrayList<>();
     private ArrayList<Unidad> Unidades = new ArrayList<>();
+    private ArrayList<Unidad> unidadesEnProceso = new ArrayList<>();
 
     public ArrayList<Estructura> getEstructuras() {
         return Estructuras;
@@ -47,7 +49,21 @@ public class Jugador {
     public void realizarTurno() {
         int opc = 0, opcSec, opcTer;
         Scanner leer = new Scanner(System.in);
-
+        
+        
+        Iterator<Unidad> it = unidadesEnProceso.iterator();
+        
+        if(!unidadesEnProceso.isEmpty()){
+            while(it.hasNext()){
+                Unidad unidad = it.next();
+                if(Main.fase == unidad.getFaseCreacion() + unidad.getTiempoCreacion()){
+                    Unidades.add(unidad);
+                    System.out.println(unidad.getNombre() + " esta listo para ser usado!");
+                    it.remove();
+                }
+            }
+        }
+        
         while (opc != 4) {
             System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
             System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
@@ -121,7 +137,7 @@ public class Jugador {
                                     switch(opcTer) {
                                         case 1:
                                             if(validarCosto(CostoUnidades.getCosto("militia"))){
-                                                Unidades.add(factoryUnidad.getUnidad("militia")); 
+                                                unidadesEnProceso.add(factoryUnidad.getUnidad("militia")); 
                                                 descontarCosto(CostoUnidades.getCosto("militia"));
                                                 System.out.println("Se ha entrenado una Militia");
                                                 break;
@@ -131,7 +147,7 @@ public class Jugador {
 
                                         case 2:
                                             if(validarCosto(CostoUnidades.getCosto("footman"))){
-                                                Unidades.add(factoryUnidad.getUnidad("footman")); 
+                                                unidadesEnProceso.add(factoryUnidad.getUnidad("footman")); 
                                                 descontarCosto(CostoUnidades.getCosto("footman"));
                                                 System.out.println("Se ha entrenado un Footman");
                                                 break;
@@ -140,7 +156,7 @@ public class Jugador {
                                             break;
                                         case 3:
                                             if(validarCosto(CostoUnidades.getCosto("paladin"))){
-                                                Unidades.add(factoryUnidad.getUnidad("paladin")); 
+                                                unidadesEnProceso.add(factoryUnidad.getUnidad("paladin")); 
                                                 descontarCosto(CostoUnidades.getCosto("paladin"));
                                                 System.out.println("Se ha entrenado un Paladin");
                                                 break;
@@ -157,7 +173,7 @@ public class Jugador {
                                     switch(opcTer) {
                                         case 1:
                                             if(validarCosto(CostoUnidades.getCosto("druid"))){
-                                                Unidades.add(factoryUnidad.getUnidad("druid")); 
+                                                unidadesEnProceso.add(factoryUnidad.getUnidad("druid")); 
                                                 descontarCosto(CostoUnidades.getCosto("druid"));
                                                 System.out.println("Se ha entrenado un Druid");
                                                 break;
@@ -166,7 +182,7 @@ public class Jugador {
                                             break;
                                         case 2:
                                             if(validarCosto(CostoUnidades.getCosto("huntress"))){
-                                                Unidades.add(factoryUnidad.getUnidad("huntress")); 
+                                                unidadesEnProceso.add(factoryUnidad.getUnidad("huntress")); 
                                                 descontarCosto(CostoUnidades.getCosto("huntress"));
                                                 System.out.println("Se ha entrenado una Huntress");
                                                 break;
@@ -175,7 +191,7 @@ public class Jugador {
                                             break;
                                         case 3:
                                             if(validarCosto(CostoUnidades.getCosto("warden"))){
-                                                Unidades.add(factoryUnidad.getUnidad("warden")); 
+                                                unidadesEnProceso.add(factoryUnidad.getUnidad("warden")); 
                                                 descontarCosto(CostoUnidades.getCosto("warden"));
                                                 System.out.println("Se ha entrenado un Warden");
                                                 break;
@@ -187,8 +203,9 @@ public class Jugador {
                             }
                             break;
                         case 2:
-                            System.out.println("Mostrar Unidades");
-                            System.out.println("\n");
+                            System.out.println("============== Unidades de " + this.nombre + " ==============");
+                            mostrarUnidades();
+                            System.out.println("===================================================");
                             break;
                         case 3:
                             System.out.println("Enviar a atacar");
@@ -237,6 +254,60 @@ public class Jugador {
         System.out.println("3.) Warden");
         System.out.println("4.) Atras");
         System.out.print("Elija una opcion: ");
+    }
+    
+    public void mostrarUnidades() {
+        int u1 = 0, u2 = 0, u3 = 0;
+        switch(this.raza){
+            case "humanos":
+                for(Unidad u : Unidades){
+                    if(u.getNombre() != null) {
+                        switch(u.getNombre()) {
+                            case "militia":
+                                u1 += 1;
+                                break;
+                            case "footman":
+                                u2 += 1;
+                                break;
+                            case "paladin":
+                                u3 += 1;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                System.out.println("Militia: " + u1);
+                System.out.println("Footman: " + u2);
+                System.out.println("Paladin: " + u3);
+                break;
+            
+            case "elfos":
+                for(Unidad u : Unidades){
+                    if(u.getNombre() != null) {
+                        switch(u.getNombre()) {
+                            case "druid":
+                                u1 += 1;
+                                break;
+                            case "huntress":
+                                u2 += 1;
+                                break;
+                            case "warden":
+                                u3 += 1;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                System.out.println("Druid: " + u1);
+                System.out.println("Huntress: " + u2);
+                System.out.println("Warden: " + u3);
+                break;
+            
+            default:
+                break;
+        }
     }
 
     public int getOro() {

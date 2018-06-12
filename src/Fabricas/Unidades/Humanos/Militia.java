@@ -5,7 +5,7 @@
  */
 package Fabricas.Unidades.Humanos;
 
-import Fabricas.Costo;
+
 import Fabricas.Unidades.Unidad;
 
 /**
@@ -13,7 +13,28 @@ import Fabricas.Unidades.Unidad;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class Militia implements Unidad{
+    private final String nombre = "militia";
+    private boolean estaHabilitado = false;
     private int vida, ataque;
-    private Costo costo;
+    private int faseCreacion, tiempoCreacion = 1;
+    
+    public Militia(int fase) {
+        this.faseCreacion = fase;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+    
+    @Override
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+    
+    @Override
+    public int getTiempoCreacion() {
+        return tiempoCreacion;
+    }
 
 }

@@ -10,5 +10,5 @@ package Fabricas.Estructuras;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class TownCenter implements Estructura{
-    private int vida;
+    private int vida, nivel = 1;
 }

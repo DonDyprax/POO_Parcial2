@@ -5,7 +5,7 @@
  */
 package Fabricas.Unidades.Elfos;
 
-import Fabricas.Costo;
+
 import Fabricas.Unidades.Unidad;
 
 /**
@@ -13,8 +13,29 @@ import Fabricas.Unidades.Unidad;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class Huntress implements Unidad{
+    private final String nombre = "huntress";
+    private boolean estaHabilitado = false;
     private int vida, ataque;
-    private Costo costo;
+    private int faseCreacion, tiempoCreacion = 2;
+    
+    public Huntress(int fase) {
+        this.faseCreacion = fase;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+    
+    @Override
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+    
+    @Override
+    public int getTiempoCreacion() {
+        return tiempoCreacion;
+    }
 
 }
 

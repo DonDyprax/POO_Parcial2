@@ -23,6 +23,7 @@ import java.util.Iterator;
 public class Jugador {
     AbstractFactory factoryUnidad = FactoryProducer.getFactory("unidad");
     AbstractFactory factoryEstructura = FactoryProducer.getFactory("estructura");
+    private Jugador otroJugador;
     private String nombre, raza;
     private int oro, madera, metal;
     private ArrayList<Estructura> Estructuras = new ArrayList<>();
@@ -139,7 +140,6 @@ public class Jugador {
                                             if(validarCosto(CostoUnidades.getCosto("militia"))){
                                                 unidadesEnProceso.add(factoryUnidad.getUnidad("militia")); 
                                                 descontarCosto(CostoUnidades.getCosto("militia"));
-                                                System.out.println("Se ha entrenado una Militia");
                                                 break;
                                             }
                                             System.out.println("No tienes suficientes recursos para entrenar una Militia");
@@ -149,7 +149,6 @@ public class Jugador {
                                             if(validarCosto(CostoUnidades.getCosto("footman"))){
                                                 unidadesEnProceso.add(factoryUnidad.getUnidad("footman")); 
                                                 descontarCosto(CostoUnidades.getCosto("footman"));
-                                                System.out.println("Se ha entrenado un Footman");
                                                 break;
                                             }
                                             System.out.println("No tienes suficientes recursos para entrenar un Footman");
@@ -158,7 +157,6 @@ public class Jugador {
                                             if(validarCosto(CostoUnidades.getCosto("paladin"))){
                                                 unidadesEnProceso.add(factoryUnidad.getUnidad("paladin")); 
                                                 descontarCosto(CostoUnidades.getCosto("paladin"));
-                                                System.out.println("Se ha entrenado un Paladin");
                                                 break;
                                             }                                           
                                             System.out.println("No tienes suficientes recursos para entrenar un Paladin");
@@ -175,7 +173,6 @@ public class Jugador {
                                             if(validarCosto(CostoUnidades.getCosto("druid"))){
                                                 unidadesEnProceso.add(factoryUnidad.getUnidad("druid")); 
                                                 descontarCosto(CostoUnidades.getCosto("druid"));
-                                                System.out.println("Se ha entrenado un Druid");
                                                 break;
                                             }
                                             System.out.println("No tienes suficientes recursos para entrenar un Druid");
@@ -184,7 +181,6 @@ public class Jugador {
                                             if(validarCosto(CostoUnidades.getCosto("huntress"))){
                                                 unidadesEnProceso.add(factoryUnidad.getUnidad("huntress")); 
                                                 descontarCosto(CostoUnidades.getCosto("huntress"));
-                                                System.out.println("Se ha entrenado una Huntress");
                                                 break;
                                             }
                                             System.out.println("No tienes suficientes recursos para entrenar una Huntress");
@@ -193,7 +189,6 @@ public class Jugador {
                                             if(validarCosto(CostoUnidades.getCosto("warden"))){
                                                 unidadesEnProceso.add(factoryUnidad.getUnidad("warden")); 
                                                 descontarCosto(CostoUnidades.getCosto("warden"));
-                                                System.out.println("Se ha entrenado un Warden");
                                                 break;
                                             }
                                             System.out.println("No tienes suficientes recursos para entrenar un Warden");
@@ -203,13 +198,12 @@ public class Jugador {
                             }
                             break;
                         case 2:
-                            System.out.println("============== Unidades de " + this.nombre + " ==============");
+                            System.out.println("====================== Unidades de " + this.nombre + " =====================");
                             mostrarUnidades();
-                            System.out.println("===================================================");
+                            System.out.println("==================================================================");
                             break;
                         case 3:
-                            System.out.println("Enviar a atacar");
-                            System.out.println("\n");
+                            mostrarEstructurasEnemigas(otroJugador);
                             break;
                         case 4:
                             break;
@@ -309,6 +303,14 @@ public class Jugador {
                 break;
         }
     }
+    
+    public void mostrarEstructurasEnemigas(Jugador jugador){
+        System.out.println("====================== Estructuras de " + this.otroJugador.getNombre() + " =====================");
+        for(int i = 0 ; i < jugador.getEstructuras().size() ; i++ ) {
+            System.out.println(i+1 + ".) " + jugador.getEstructuras().get(i).getNombre() + " - Vida Restante: " + jugador.getEstructuras().get(i).getVida());
+        }
+        System.out.println("==================================================================");
+    }
 
     public int getOro() {
         return oro;
@@ -345,6 +347,14 @@ public class Jugador {
     public String getRaza() {
         return raza;
     }
+
+    public Jugador getOtroJugador() {
+        return otroJugador;
+    }
+
+    public void setOtroJugador(Jugador otroJugador) {
+        this.otroJugador = otroJugador;
+    }        
     
     public void descontarCosto(Costo costo) {
         this.oro -= costo.getOro();

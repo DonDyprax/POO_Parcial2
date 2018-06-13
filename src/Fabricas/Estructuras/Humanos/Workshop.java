@@ -11,5 +11,16 @@ import Fabricas.Estructuras.Estructura;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class Workshop implements Estructura{
+    private String nombre = "Workshop";
     private int vida;
+    
+    @Override
+    public String getNombre(){
+        return this.nombre;
+    }
+    
+    @Override
+    public int getVida(){
+        return this.vida;
+    }
 }

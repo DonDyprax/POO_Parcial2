@@ -6,6 +6,7 @@
 package Fabricas.Unidades.Elfos;
 
 
+import Fabricas.Estructuras.Estructura;
 import Fabricas.Unidades.Unidad;
 
 /**
@@ -20,6 +21,11 @@ public class Huntress implements Unidad{
     
     public Huntress(int fase) {
         this.faseCreacion = fase;
+    }
+    
+    @Override
+    public void atacar(Estructura estructura){
+        
     }
 
     @Override

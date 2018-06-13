@@ -5,12 +5,15 @@
  */
 package Fabricas.Unidades;
 
+import Fabricas.Estructuras.Estructura;
+
 
 /**
  *
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public interface Unidad {
+    void atacar(Estructura estructura);
     String getNombre();
     int getFaseCreacion();
     int getTiempoCreacion();

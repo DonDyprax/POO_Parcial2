@@ -10,5 +10,16 @@ package Fabricas.Estructuras;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class TownCenter implements Estructura{
+    private String nombre = "Town Center";
     private int vida, nivel = 1;
+    
+    @Override
+    public String getNombre(){
+        return this.nombre;
+    }
+    
+    @Override
+    public int getVida(){
+        return this.vida;
+    }
 }

@@ -10,5 +10,6 @@ package Fabricas.Estructuras;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public interface Estructura {
-    
+    String getNombre();
+    int getVida();
 }

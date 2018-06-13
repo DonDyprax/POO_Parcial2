@@ -6,6 +6,7 @@
 package Fabricas.Unidades.Elfos;
 
 
+import Fabricas.Estructuras.Estructura;
 import Fabricas.Unidades.Unidad;
 
 /**
@@ -22,6 +23,12 @@ public class Warden implements Unidad{
         this.faseCreacion = fase;
     }
 
+    
+    @Override
+    public void atacar(Estructura estructura){
+        
+    }
+    
     @Override
     public String getNombre() {
         return nombre;

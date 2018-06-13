@@ -9,6 +9,17 @@ package Fabricas.Estructuras;
  *
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
-public class Mine {
+public class Mine implements Estructura{
+    private String nombre = "Mine";
+    private int vida;
     
+    @Override
+    public String getNombre(){
+        return this.nombre;
+    }
+    
+    @Override
+    public int getVida(){
+        return this.vida;
+    }
 }

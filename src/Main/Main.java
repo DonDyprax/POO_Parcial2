@@ -13,16 +13,18 @@ import java.util.Scanner;
  */
 public class Main {
     public static int fase = 0;
+    private static Jugador j1 = new Jugador();
+    private static Jugador j2 = new Jugador();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         boolean juegoTerminado = false;
-        
-        Jugador j1 = new Jugador();
-        Jugador j2 = new Jugador();
-        
+                
         Scanner leer = new Scanner(System.in);
+        
+        j1.setOtroJugador(j2);
+        j2.setOtroJugador(j1);
         
         System.out.println("====================================================");
         System.out.print("Ingrese el nombre del jugador 1: ");
@@ -59,6 +61,14 @@ public class Main {
             fase += 1;
         }
         
+    }
+    
+    public Jugador getJugador1(){
+        return j1;
+    }
+    
+    public Jugador getJugador2(){
+        return j2;
     }
     
     public static void mostrarMenuRazas(){

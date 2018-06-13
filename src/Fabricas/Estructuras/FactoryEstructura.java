@@ -11,6 +11,7 @@ import Fabricas.Estructuras.Humanos.Sanctuary;
 import Fabricas.Estructuras.Humanos.Workshop;
 
 import Fabricas.Unidades.Unidad;
+import Main.Main;
 
 /**
  *
@@ -27,12 +28,18 @@ public class FactoryEstructura implements AbstractFactory{
         switch (type) {
             case "townCenter":
                 return new TownCenter();
+            case "mine":
+                return new Mine(Main.fase);
+            case "sawmill":
+                return new Sawmill(Main.fase);
+            case "forge":
+                return new Forge(Main.fase);          
             case "barracks":
-                return new Barracks();
+                return new Barracks(Main.fase);
             case "sanctuary":
-                return new Sanctuary();
+                return new Sanctuary(Main.fase);
             case "workshop":
-                return new Workshop();
+                return new Workshop(Main.fase);
         }
         return null;
     }

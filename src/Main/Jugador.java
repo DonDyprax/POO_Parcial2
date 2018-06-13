@@ -12,6 +12,7 @@ import Fabricas.Unidades.Unidad;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Fabricas.Costo;
+import Fabricas.Estructuras.CostoEstructuras;
 import Fabricas.Unidades.CostoUnidades;
 import java.util.Iterator;
 
@@ -29,6 +30,7 @@ public class Jugador {
     private ArrayList<Estructura> Estructuras = new ArrayList<>();
     private ArrayList<Unidad> Unidades = new ArrayList<>();
     private ArrayList<Unidad> unidadesEnProceso = new ArrayList<>();
+    private ArrayList<Estructura> estructurasEnProceso = new ArrayList<>();
 
     public ArrayList<Estructura> getEstructuras() {
         return Estructuras;
@@ -52,15 +54,27 @@ public class Jugador {
         Scanner leer = new Scanner(System.in);
         
         
-        Iterator<Unidad> it = unidadesEnProceso.iterator();
+        Iterator<Unidad> itU = unidadesEnProceso.iterator();
+        Iterator<Estructura> itE = estructurasEnProceso.iterator();
         
         if(!unidadesEnProceso.isEmpty()){
-            while(it.hasNext()){
-                Unidad unidad = it.next();
+            while(itU.hasNext()){
+                Unidad unidad = itU.next();
                 if(Main.fase == unidad.getFaseCreacion() + unidad.getTiempoCreacion()){
                     Unidades.add(unidad);
                     System.out.println(unidad.getNombre() + " esta listo para ser usado!");
-                    it.remove();
+                    itU.remove();
+                }
+            }
+        }
+        
+        if(!estructurasEnProceso.isEmpty()){
+            while(itE.hasNext()){
+                Estructura estructura = itE.next();
+                if(Main.fase == estructura.getFaseCreacion() + estructura.getTiempoCreacion()){
+                    Estructuras.add(estructura);
+                    System.out.println(estructura.getNombre() + " esta lista para ser usada!");
+                    itE.remove();
                 }
             }
         }
@@ -93,13 +107,71 @@ public class Jugador {
 
                     switch (opcSec) {
                         case 1:
-                            System.out.println("Construir Estructura");
-                            System.out.println("\n");
-                            Estructuras.clear();
+                            switch (this.raza) {
+                                case "humanos":
+                                    menuEstructurasHumano();                                   
+                                    opcTer = leer.nextInt();
+                                    System.out.println("\n");
+                                    switch(opcTer) {
+                                        case 1:
+                                            if(validarCosto(CostoEstructuras.getCosto("mine"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("mine")); 
+                                                descontarCosto(CostoEstructuras.getCosto("mine"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Mine");
+                                            break;                                           
+
+                                        case 2:
+                                            if(validarCosto(CostoEstructuras.getCosto("sawmill"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("sawmill")); 
+                                                descontarCosto(CostoEstructuras.getCosto("sawmill"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Sawmill");
+                                            break;
+                                        case 3:
+                                            if(validarCosto(CostoEstructuras.getCosto("forge"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("forge")); 
+                                                descontarCosto(CostoEstructuras.getCosto("forge"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Forge");
+                                            break;
+                                        case 4:
+                                            if(validarCosto(CostoEstructuras.getCosto("barracks"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("barracks")); 
+                                                descontarCosto(CostoEstructuras.getCosto("barracks"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir un Barracks");
+                                            break;
+                                        case 5:
+                                            if(validarCosto(CostoEstructuras.getCosto("sanctuary"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("sanctuary")); 
+                                                descontarCosto(CostoEstructuras.getCosto("sanctuary"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir un Sanctuary");
+                                            break;
+                                        case 6:
+                                            if(validarCosto(CostoEstructuras.getCosto("workshop"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("workshop")); 
+                                                descontarCosto(CostoEstructuras.getCosto("workshop"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Workshop");
+                                            break;
+                                        case 7:
+                                            break;
+                                    }
+                                    break;                                                                       
+                            }
                             break;
                             
                         case 2:
                             System.out.println("Mostrar Estructuras");
+                            System.out.println(Estructuras);
                             System.out.println("\n");
                             break;
                         case 3:
@@ -238,6 +310,20 @@ public class Jugador {
         System.out.println("4.) Atras");
         System.out.print("Elija una opcion: ");
     }
+    
+    public void menuEstructurasHumano() {
+        System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
+        System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
+        System.out.print("\n");
+        System.out.println("1.) Mine");
+        System.out.println("2.) Sawmill");
+        System.out.println("3.) Forge");
+        System.out.println("4.) Barracks");
+        System.out.println("5.) Sanctuary");
+        System.out.println("6.) Workshop");
+        System.out.println("7.) Atras");
+        System.out.print("Elija una opcion: ");
+    }
 
     public void menuUnidadesElfo() {
         System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
@@ -305,7 +391,7 @@ public class Jugador {
     }
     
     public void mostrarEstructurasEnemigas(Jugador jugador){
-        System.out.println("====================== Estructuras de " + this.otroJugador.getNombre() + " =====================");
+        System.out.println("====================== Estructuras de " + this.otroJugador.getNombre() + " ======================");
         for(int i = 0 ; i < jugador.getEstructuras().size() ; i++ ) {
             System.out.println(i+1 + ".) " + jugador.getEstructuras().get(i).getNombre() + " - Vida Restante: " + jugador.getEstructuras().get(i).getVida());
         }

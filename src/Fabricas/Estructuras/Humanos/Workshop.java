@@ -12,7 +12,11 @@ import Fabricas.Estructuras.Estructura;
  */
 public class Workshop implements Estructura{
     private String nombre = "Workshop";
-    private int vida;
+    private int vida, faseCreacion, tiempoCreacion = 2;
+    
+    public Workshop(int fase){
+        this.faseCreacion = fase;
+    }
     
     @Override
     public String getNombre(){
@@ -22,5 +26,15 @@ public class Workshop implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public Integer getFaseCreacion() {
+        return faseCreacion;
+    }
+    
+    @Override
+    public Integer getTiempoCreacion() {
+        return tiempoCreacion;
     }
 }

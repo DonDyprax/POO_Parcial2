@@ -11,7 +11,11 @@ package Fabricas.Estructuras;
  */
 public class Mine implements Estructura{
     private String nombre = "Mine";
-    private int vida;
+    private int vida, faseCreacion, tiempoCreacion = 1;
+    
+    public Mine(int fase){
+        this.faseCreacion = fase;
+    }
     
     @Override
     public String getNombre(){
@@ -21,5 +25,15 @@ public class Mine implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public Integer getFaseCreacion() {
+        return faseCreacion;
+    }
+    
+    @Override
+    public Integer getTiempoCreacion() {
+        return tiempoCreacion;
     }
 }

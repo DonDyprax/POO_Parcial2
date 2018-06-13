@@ -22,4 +22,14 @@ public class TownCenter implements Estructura{
     public int getVida(){
         return this.vida;
     }
+    
+    @Override
+    public Integer getFaseCreacion(){
+        return null;
+    }
+    
+    @Override
+    public Integer getTiempoCreacion(){
+        return null;
+    }
 }

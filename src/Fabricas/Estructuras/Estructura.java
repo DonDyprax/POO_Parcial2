@@ -12,4 +12,6 @@ package Fabricas.Estructuras;
 public interface Estructura {
     String getNombre();
     int getVida();
+    Integer getFaseCreacion();
+    Integer getTiempoCreacion();
 }

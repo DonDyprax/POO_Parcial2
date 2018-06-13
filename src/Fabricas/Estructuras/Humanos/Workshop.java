@@ -19,6 +19,11 @@ public class Workshop implements Estructura{
     }
     
     @Override
+    public Integer getRecursoGenerado(){
+        return null;
+    }
+    
+    @Override
     public String getNombre(){
         return this.nombre;
     }

@@ -11,10 +11,15 @@ package Fabricas.Estructuras;
  */
 public class Mine implements Estructura{
     private String nombre = "Mine";
-    private int vida, faseCreacion, tiempoCreacion = 1;
+    private int vida = 600, faseCreacion, tiempoCreacion = 1, oroGenerado = 40;
     
     public Mine(int fase){
         this.faseCreacion = fase;
+    }
+    
+    @Override
+    public Integer getRecursoGenerado(){
+        return this.oroGenerado;
     }
     
     @Override

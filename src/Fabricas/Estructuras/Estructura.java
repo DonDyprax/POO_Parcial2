@@ -14,4 +14,5 @@ public interface Estructura {
     int getVida();
     Integer getFaseCreacion();
     Integer getTiempoCreacion();
+    Integer getRecursoGenerado();
 }

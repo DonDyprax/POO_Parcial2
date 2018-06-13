@@ -5,7 +5,7 @@
  */
 package Fabricas.Estructuras;
 
-import Main.Main;
+
 
 /**
  *
@@ -13,11 +13,17 @@ import Main.Main;
  */
 public class Forge implements Estructura{
     private String nombre = "Forge";
-    private int vida, faseCreacion, tiempoCreacion = 1;
+    private int vida = 500, faseCreacion, tiempoCreacion = 1, metalGenerado = 40;
     
     public Forge(int fase){
         this.faseCreacion = fase;
     }
+    
+    @Override
+    public Integer getRecursoGenerado(){
+        return this.metalGenerado;
+    }
+    
     
     @Override
     public String getNombre(){

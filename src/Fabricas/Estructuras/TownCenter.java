@@ -11,7 +11,12 @@ package Fabricas.Estructuras;
  */
 public class TownCenter implements Estructura{
     private String nombre = "Town Center";
-    private int vida, nivel = 1;
+    private int vida = 2000, nivel = 1;
+    
+   @Override
+    public Integer getRecursoGenerado(){
+        return null;
+    }
     
     @Override
     public String getNombre(){

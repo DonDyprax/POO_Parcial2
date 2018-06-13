@@ -11,10 +11,15 @@ package Fabricas.Estructuras;
  */
 public class Sawmill implements Estructura{
     private String nombre = "Sawmill";
-    private int vida, faseCreacion, tiempoCreacion = 1;
+    private int vida = 400, faseCreacion, tiempoCreacion = 1, maderaGenerada = 40;
     
     public Sawmill(int fase){
         this.faseCreacion = fase;
+    }
+    
+    @Override
+    public Integer getRecursoGenerado(){
+        return this.maderaGenerada;
     }
     
     @Override

@@ -27,6 +27,7 @@ public class Jugador {
     private Jugador otroJugador;
     private String nombre, raza;
     private int oro, madera, metal;
+    private int oroTemp = 0, maderaTemp = 0, metalTemp = 0;
     private ArrayList<Estructura> Estructuras = new ArrayList<>();
     private ArrayList<Unidad> Unidades = new ArrayList<>();
     private ArrayList<Unidad> unidadesEnProceso = new ArrayList<>();
@@ -57,6 +58,24 @@ public class Jugador {
         Iterator<Unidad> itU = unidadesEnProceso.iterator();
         Iterator<Estructura> itE = estructurasEnProceso.iterator();
         
+        if(!Estructuras.isEmpty()){
+            for(Estructura e : Estructuras){
+                if("Mine".equals(e.getNombre()) || "Sawmill".equals(e.getNombre()) || "Forge".equals(e.getNombre())){
+                    switch(e.getNombre()){
+                        case "Mine":
+                            this.oroTemp += e.getRecursoGenerado();
+                            break;
+                        case "Sawmill":
+                            this.maderaTemp += e.getRecursoGenerado();
+                            break;
+                        case "Forge":
+                            this.metalTemp += e.getRecursoGenerado();
+                            break;
+                    }
+                }
+            }
+        }
+        
         if(!unidadesEnProceso.isEmpty()){
             while(itU.hasNext()){
                 Unidad unidad = itU.next();
@@ -77,8 +96,8 @@ public class Jugador {
                     itE.remove();
                 }
             }
-        }
-        
+        }       
+              
         while (opc != 4) {
             System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
             System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
@@ -89,7 +108,7 @@ public class Jugador {
             System.out.println("4.) Finalizar Turno");
 
             System.out.print("Que desea hacer?: ");
-            opc = leer.nextInt();
+            opc = leer.nextInt();       
             System.out.print("\n");
 
             switch (opc) {
@@ -287,6 +306,7 @@ public class Jugador {
 
                 case 3:
                     System.out.println("Recursos recolectados");
+                    recolectarRecursos();
                     System.out.print("\n");
                     break;
 
@@ -306,7 +326,7 @@ public class Jugador {
         System.out.print("\n");
         System.out.println("1.) Militia");
         System.out.println("2.) Footman");
-        System.out.println("3.) Paladin");
+        System.out.println("3.) Paladin - Specialist");
         System.out.println("4.) Atras");
         System.out.print("Elija una opcion: ");
     }
@@ -331,9 +351,18 @@ public class Jugador {
         System.out.print("\n");
         System.out.println("1.) Druid");
         System.out.println("2.) Huntress");
-        System.out.println("3.) Warden");
+        System.out.println("3.) Warden - Specialist");
         System.out.println("4.) Atras");
         System.out.print("Elija una opcion: ");
+    }
+    
+    public void recolectarRecursos(){
+        this.oro += this.oroTemp;
+        this.oroTemp = 0;
+        this.madera += this.maderaTemp;
+        this.maderaTemp = 0;
+        this.metal += this.metalTemp;
+        this.metalTemp = 0;
     }
     
     public void mostrarUnidades() {

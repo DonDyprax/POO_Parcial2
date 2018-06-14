@@ -8,6 +8,7 @@ package Fabricas.Unidades.Elfos;
 
 import Fabricas.Estructuras.Estructura;
 import Fabricas.Unidades.Unidad;
+import Main.Main;
 
 /**
  *
@@ -15,9 +16,8 @@ import Fabricas.Unidades.Unidad;
  */
 public class Warden implements Unidad{
     private final String nombre = "warden";
-    private boolean estaHabilitado = false;
-    private int vida, ataque;
-    private int faseCreacion, tiempoCreacion = 3;
+    private int vida, ataqueUnidad, ataqueEstructura;
+    private int faseCreacion, faseAtaque, tiempoCreacion = 3;
     
     public Warden(int fase) {
         this.faseCreacion = fase;
@@ -26,7 +26,7 @@ public class Warden implements Unidad{
     
     @Override
     public void atacar(Estructura estructura){
-        
+        this.faseAtaque = Main.fase;
     }
     
     @Override
@@ -42,6 +42,11 @@ public class Warden implements Unidad{
     @Override
     public int getTiempoCreacion() {
         return tiempoCreacion;
+    }
+    
+    @Override
+    public int getFaseAtaque() {
+        return faseAtaque;
     }
 
 }

@@ -8,6 +8,7 @@ package Fabricas.Unidades.Humanos;
 
 import Fabricas.Estructuras.Estructura;
 import Fabricas.Unidades.Unidad;
+import Main.Main;
 
 /**
  *
@@ -15,9 +16,8 @@ import Fabricas.Unidades.Unidad;
  */
 public class Militia implements Unidad{
     private final String nombre = "militia";
-    private boolean estaHabilitado = false;
-    private int vida, ataque;
-    private int faseCreacion, tiempoCreacion = 1;
+    private int vida, ataqueUnidad, ataqueEstructura;
+    private int faseCreacion, faseAtaque, tiempoCreacion = 1;
     
     public Militia(int fase) {
         this.faseCreacion = fase;
@@ -25,7 +25,7 @@ public class Militia implements Unidad{
     
     @Override
     public void atacar(Estructura estructura){
-        
+        this.faseAtaque = Main.fase;
     }
 
     @Override
@@ -41,6 +41,11 @@ public class Militia implements Unidad{
     @Override
     public int getTiempoCreacion() {
         return tiempoCreacion;
+    }
+    
+    @Override
+    public int getFaseAtaque() {
+        return faseAtaque;
     }
 
 }

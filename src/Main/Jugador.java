@@ -228,30 +228,55 @@ public class Jugador {
                                     System.out.println("\n");
                                     switch(opcTer) {
                                         case 1:
-                                            if(validarCosto(CostoUnidades.getCosto("militia"))){
-                                                unidadesEnProceso.add(factoryUnidad.getUnidad("militia")); 
-                                                descontarCosto(CostoUnidades.getCosto("militia"));
+                                            if(!revisarEstructura("Barracks")) {
+                                                System.out.println("Debes construir un Barracks para entrenar una Militia");
                                                 break;
+                                            } else {
+                                                if(validarCosto(CostoUnidades.getCosto("militia"))){
+                                                    unidadesEnProceso.add(factoryUnidad.getUnidad("militia")); 
+                                                    descontarCosto(CostoUnidades.getCosto("militia"));
+                                                    break;
+                                                } else {
+                                                    System.out.println("No tienes suficientes recursos para entrenar una Militia");
+                                                }                                  
                                             }
-                                            System.out.println("No tienes suficientes recursos para entrenar una Militia");
                                             break;                                           
 
                                         case 2:
-                                            if(validarCosto(CostoUnidades.getCosto("footman"))){
-                                                unidadesEnProceso.add(factoryUnidad.getUnidad("footman")); 
-                                                descontarCosto(CostoUnidades.getCosto("footman"));
+                                            if(!revisarEstructura("Barracks")) {
+                                                System.out.println("Debes construir un Barracks para entrenar un Footman");
                                                 break;
+                                            } else {
+                                                if(validarCosto(CostoUnidades.getCosto("footman"))){
+                                                    unidadesEnProceso.add(factoryUnidad.getUnidad("footman")); 
+                                                    descontarCosto(CostoUnidades.getCosto("footman"));
+                                                    break;
+                                                } else {
+                                                    System.out.println("No tienes suficientes recursos para entrenar un Footman");
+                                                }                                  
                                             }
-                                            System.out.println("No tienes suficientes recursos para entrenar un Footman");
                                             break;
+                                            
                                         case 3:
-                                            if(validarCosto(CostoUnidades.getCosto("paladin"))){
-                                                unidadesEnProceso.add(factoryUnidad.getUnidad("paladin")); 
-                                                descontarCosto(CostoUnidades.getCosto("paladin"));
+                                            if(revisarSpecialist("paladin")) {
+                                                System.out.println("Solo se puede tener un Paladin a la vez");
+                                            }
+                                            else {
+                                                if(!revisarEstructura("Sanctuary")) {
+                                                System.out.println("Debes construir un Sanctuary para entrenar un Paladin");
                                                 break;
-                                            }                                           
-                                            System.out.println("No tienes suficientes recursos para entrenar un Paladin");
+                                                } else {
+                                                    if(validarCosto(CostoUnidades.getCosto("paladin"))){
+                                                        unidadesEnProceso.add(factoryUnidad.getUnidad("paladin")); 
+                                                        descontarCosto(CostoUnidades.getCosto("paladin"));
+                                                        break;
+                                                    } else {
+                                                        System.out.println("No tienes suficientes recursos para entrenar un Paladin");
+                                                    }                                  
+                                                }
+                                            }
                                             break;
+                                            
                                     }
                                     break;
                                         
@@ -294,7 +319,13 @@ public class Jugador {
                             System.out.println("==================================================================");
                             break;
                         case 3:
-                            mostrarEstructurasEnemigas(otroJugador);
+                            if(Unidades.isEmpty()){
+                                System.out.println("No tienes ninguna unidad para poder atacar");
+                                break;
+                            }
+                            else{
+                                mostrarEstructurasEnemigas(otroJugador);
+                            }
                             break;
                         case 4:
                             break;
@@ -324,9 +355,9 @@ public class Jugador {
         System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
         System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
         System.out.print("\n");
-        System.out.println("1.) Militia");
-        System.out.println("2.) Footman");
-        System.out.println("3.) Paladin - Specialist");
+        System.out.println("1.) Militia (Requiere: Barracks)");
+        System.out.println("2.) Footman (Requiere: Barracks");
+        System.out.println("3.) Paladin - Specialist (Requiere: Sanctuary)");
         System.out.println("4.) Atras");
         System.out.print("Elija una opcion: ");
     }
@@ -499,5 +530,31 @@ public class Jugador {
                 System.out.println("Ingrese una opcion valida");
         }
     }
-
+    
+    public boolean revisarEstructura(String nombre){
+        for(int i = 0 ; i < Estructuras.size() ; i++) {
+            if(nombre.equals(Estructuras.get(i).getNombre())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean revisarSpecialist(String nombre) {       
+        for(int i = 0 ; i < unidadesEnProceso.size() ; i++){
+            if(nombre.equals(unidadesEnProceso.get(i).getNombre())){
+                return true;
+            }
+        }
+        
+        for(int i = 0 ; i < Unidades.size() ; i++) {
+            if(nombre.equals(Unidades.get(i).getNombre())) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    
 }

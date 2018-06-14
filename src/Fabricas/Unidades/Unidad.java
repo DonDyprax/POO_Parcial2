@@ -17,4 +17,5 @@ public interface Unidad {
     String getNombre();
     int getFaseCreacion();
     int getTiempoCreacion();
+    int getFaseAtaque();
 }

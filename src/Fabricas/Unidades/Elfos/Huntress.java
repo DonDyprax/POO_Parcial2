@@ -8,6 +8,7 @@ package Fabricas.Unidades.Elfos;
 
 import Fabricas.Estructuras.Estructura;
 import Fabricas.Unidades.Unidad;
+import Main.Main;
 
 /**
  *
@@ -15,9 +16,8 @@ import Fabricas.Unidades.Unidad;
  */
 public class Huntress implements Unidad{
     private final String nombre = "huntress";
-    private boolean estaHabilitado = false;
-    private int vida, ataque;
-    private int faseCreacion, tiempoCreacion = 2;
+    private int vida, ataqueUnidad, ataqueEstructura;
+    private int faseCreacion, faseAtaque, tiempoCreacion = 2;
     
     public Huntress(int fase) {
         this.faseCreacion = fase;
@@ -25,7 +25,7 @@ public class Huntress implements Unidad{
     
     @Override
     public void atacar(Estructura estructura){
-        
+        this.faseAtaque = Main.fase;
     }
 
     @Override
@@ -41,6 +41,11 @@ public class Huntress implements Unidad{
     @Override
     public int getTiempoCreacion() {
         return tiempoCreacion;
+    }
+    
+    @Override
+    public int getFaseAtaque() {
+        return faseAtaque;
     }
 
 }

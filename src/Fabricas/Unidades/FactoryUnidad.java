@@ -13,6 +13,12 @@ import Fabricas.Unidades.Elfos.Warden;
 import Fabricas.Unidades.Humanos.Footman;
 import Fabricas.Unidades.Humanos.Militia;
 import Fabricas.Unidades.Humanos.Paladin;
+import Fabricas.Unidades.Orcos.Grunt;
+import Fabricas.Unidades.Orcos.Shaman;
+import Fabricas.Unidades.Orcos.Blademaster;
+import Fabricas.Unidades.Muertos.Acolyte;
+import Fabricas.Unidades.Muertos.Necromancer;
+import Fabricas.Unidades.Muertos.DeathKnight;
 import Main.Main;
 
 
@@ -41,6 +47,18 @@ public class FactoryUnidad implements AbstractFactory{
                 return new Militia(Main.fase);
             case "paladin":
                 return new Paladin(Main.fase);
+            case "grunt":
+                return new Grunt(Main.fase);
+            case "shaman":
+                return new Shaman(Main.fase);
+            case "blademaster":
+                return new Blademaster(Main.fase);
+            case "acolyte":
+                return new Acolyte(Main.fase);
+            case "necromancer":
+                return new Necromancer(Main.fase);
+            case "deathknight":
+                return new DeathKnight(Main.fase);
         }
         return null;
     }

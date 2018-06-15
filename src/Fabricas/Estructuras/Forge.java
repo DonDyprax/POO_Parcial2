@@ -20,6 +20,11 @@ public class Forge implements Estructura{
     }
     
     @Override
+    public Integer getNivel() {
+        return null;
+    }
+    
+    @Override
     public Integer getRecursoGenerado(){
         return this.metalGenerado;
     }

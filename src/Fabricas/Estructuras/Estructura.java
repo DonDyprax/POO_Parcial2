@@ -15,4 +15,5 @@ public interface Estructura {
     Integer getFaseCreacion();
     Integer getTiempoCreacion();
     Integer getRecursoGenerado();
+    Integer getNivel();
 }

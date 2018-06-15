@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fabricas.Estructuras.Humanos;
+package Fabricas.Estructuras.Elfos;
 
 import Fabricas.Estructuras.Estructura;
 /**
  *
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
-public class Sanctuary implements Estructura{
-    private String nombre = "Sanctuary";
-    private int vida, faseCreacion, tiempoCreacion = 2;
+public class AncientOfLore implements Estructura{
+    private String nombre = "AncientOfLore";
+    private int vida, faseCreacion, tiempoCreacion = 1;
     
-    public Sanctuary(int fase){
+    public AncientOfLore(int fase){
         this.faseCreacion = fase;
     }
     

@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fabricas.Estructuras.Humanos;
+package Fabricas.Estructuras.Muertos;
 
 import Fabricas.Estructuras.Estructura;
 /**
  *
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
-public class Sanctuary implements Estructura{
-    private String nombre = "Sanctuary";
+public class SacrificialPit implements Estructura{
+    private String nombre = "SacrificialPit";
     private int vida, faseCreacion, tiempoCreacion = 2;
     
-    public Sanctuary(int fase){
+    public SacrificialPit(int fase){
         this.faseCreacion = fase;
     }
     

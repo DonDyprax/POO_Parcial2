@@ -118,7 +118,7 @@ public class Jugador {
                     System.out.print("\n");
                     System.out.println("1.) Construir Estructura");
                     System.out.println("2.) Mostrar Estructuras");
-                    System.out.println("3.) Mejorar Centro de Mando");
+                    System.out.println("3.) Mejorar Centro de Mando - Nivel Actual: " + Estructuras.get(0).getNivel());
                     System.out.println("4.) Atras");
                     System.out.print("Elija una opcion: ");
                     opcSec = leer.nextInt();
@@ -184,7 +184,184 @@ public class Jugador {
                                         case 7:
                                             break;
                                     }
-                                    break;                                                                       
+                                    break;
+                                    
+                                case "elfos":
+                                    menuEstructurasElfo();                                   
+                                    opcTer = leer.nextInt();
+                                    System.out.println("\n");
+                                    switch(opcTer) {
+                                        case 1:
+                                            if(validarCosto(CostoEstructuras.getCosto("mine"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("mine")); 
+                                                descontarCosto(CostoEstructuras.getCosto("mine"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Mine");
+                                            break;                                           
+
+                                        case 2:
+                                            if(validarCosto(CostoEstructuras.getCosto("sawmill"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("sawmill")); 
+                                                descontarCosto(CostoEstructuras.getCosto("sawmill"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Sawmill");
+                                            break;
+                                        case 3:
+                                            if(validarCosto(CostoEstructuras.getCosto("forge"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("forge")); 
+                                                descontarCosto(CostoEstructuras.getCosto("forge"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Forge");
+                                            break;
+                                        case 4:
+                                            if(validarCosto(CostoEstructuras.getCosto("ancientoflore"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("ancientoflore")); 
+                                                descontarCosto(CostoEstructuras.getCosto("ancientoflore"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir un Ancient Of Lore");
+                                            break;
+                                        case 5:
+                                            if(validarCosto(CostoEstructuras.getCosto("ancientofwar"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("ancientofwar")); 
+                                                descontarCosto(CostoEstructuras.getCosto("ancientofwar"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir un Ancient Of War");
+                                            break;
+                                        case 6:
+                                            if(validarCosto(CostoEstructuras.getCosto("treeoflife"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("treeoflife")); 
+                                                descontarCosto(CostoEstructuras.getCosto("treeoflife"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir un Tree Of Life");
+                                            break;
+                                        case 7:
+                                            break;
+                                    }
+                                    break;
+                                    
+                                case "orcos":
+                                    menuEstructurasOrco();                                   
+                                    opcTer = leer.nextInt();
+                                    System.out.println("\n");
+                                    switch(opcTer) {
+                                        case 1:
+                                            if(validarCosto(CostoEstructuras.getCosto("mine"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("mine")); 
+                                                descontarCosto(CostoEstructuras.getCosto("mine"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Mine");
+                                            break;                                           
+
+                                        case 2:
+                                            if(validarCosto(CostoEstructuras.getCosto("sawmill"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("sawmill")); 
+                                                descontarCosto(CostoEstructuras.getCosto("sawmill"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Sawmill");
+                                            break;
+                                        case 3:
+                                            if(validarCosto(CostoEstructuras.getCosto("forge"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("forge")); 
+                                                descontarCosto(CostoEstructuras.getCosto("forge"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Forge");
+                                            break;
+                                        case 4:
+                                            if(validarCosto(CostoEstructuras.getCosto("greathall"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("greathall")); 
+                                                descontarCosto(CostoEstructuras.getCosto("greathall"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir un Great Hall");
+                                            break;
+                                        case 5:
+                                            if(validarCosto(CostoEstructuras.getCosto("voodolounge"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("voodoolounge")); 
+                                                descontarCosto(CostoEstructuras.getCosto("voodoolounge"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir un Voodoo Lounge");
+                                            break;
+                                        case 6:
+                                            if(validarCosto(CostoEstructuras.getCosto("spiritlodge"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("spiritlodge")); 
+                                                descontarCosto(CostoEstructuras.getCosto("spiritlodge"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir un Spirit Lodge");
+                                            break;
+                                        case 7:
+                                            break;
+                                    }
+                                    break; 
+                                    
+                                case "undead":
+                                    menuEstructurasUndead();                                   
+                                    opcTer = leer.nextInt();
+                                    System.out.println("\n");
+                                    switch(opcTer) {
+                                        case 1:
+                                            if(validarCosto(CostoEstructuras.getCosto("mine"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("mine")); 
+                                                descontarCosto(CostoEstructuras.getCosto("mine"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Mine");
+                                            break;                                           
+
+                                        case 2:
+                                            if(validarCosto(CostoEstructuras.getCosto("sawmill"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("sawmill")); 
+                                                descontarCosto(CostoEstructuras.getCosto("sawmill"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Sawmill");
+                                            break;
+                                        case 3:
+                                            if(validarCosto(CostoEstructuras.getCosto("forge"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("forge")); 
+                                                descontarCosto(CostoEstructuras.getCosto("forge"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Forge");
+                                            break;
+                                        case 4:
+                                            if(validarCosto(CostoEstructuras.getCosto("necropolis"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("necropolis")); 
+                                                descontarCosto(CostoEstructuras.getCosto("necropolis"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Necropolis");
+                                            break;
+                                        case 5:
+                                            if(validarCosto(CostoEstructuras.getCosto("crypt"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("crypt")); 
+                                                descontarCosto(CostoEstructuras.getCosto("crypt"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir una Crypt");
+                                            break;
+                                        case 6:
+                                            if(validarCosto(CostoEstructuras.getCosto("sacrificialpit"))){
+                                                estructurasEnProceso.add(factoryEstructura.getEstructura("sacrificialpit")); 
+                                                descontarCosto(CostoEstructuras.getCosto("sacrificialpit"));
+                                                break;
+                                            }
+                                            System.out.println("No tienes suficientes recursos para construir un Sacrificial Pit");
+                                            break;
+                                        case 7:
+                                            break;
+                                    }
+                                    break;  
                             }
                             break;
                             
@@ -195,6 +372,10 @@ public class Jugador {
                             break;
                         case 3:
                             System.out.println("Mejorar Centro de Mando");
+                            switch(Estructuras.get(0).getNivel()) {
+                                case 1:
+                                    
+                            }
                             System.out.println("\n");
                             break;
                         case 4:
@@ -281,34 +462,176 @@ public class Jugador {
                                     break;
                                         
                                 case "elfos":
-                                    menuUnidadesElfo();
+                                    menuUnidadesElfo();                                   
                                     opcTer = leer.nextInt();
                                     System.out.println("\n");
                                     switch(opcTer) {
                                         case 1:
-                                            if(validarCosto(CostoUnidades.getCosto("druid"))){
-                                                unidadesEnProceso.add(factoryUnidad.getUnidad("druid")); 
-                                                descontarCosto(CostoUnidades.getCosto("druid"));
+                                            if(!revisarEstructura("AncientOfLore")) {
+                                                System.out.println("Debes construir un Ancient Of Lore para entrenar un Druid");
                                                 break;
+                                            } else {
+                                                if(validarCosto(CostoUnidades.getCosto("druid"))){
+                                                    unidadesEnProceso.add(factoryUnidad.getUnidad("druid")); 
+                                                    descontarCosto(CostoUnidades.getCosto("druid"));
+                                                    break;
+                                                } else {
+                                                    System.out.println("No tienes suficientes recursos para entrenar un Druid");
+                                                }                                  
                                             }
-                                            System.out.println("No tienes suficientes recursos para entrenar un Druid");
-                                            break;
+                                            break;                                           
+
                                         case 2:
-                                            if(validarCosto(CostoUnidades.getCosto("huntress"))){
-                                                unidadesEnProceso.add(factoryUnidad.getUnidad("huntress")); 
-                                                descontarCosto(CostoUnidades.getCosto("huntress"));
+                                            if(!revisarEstructura("AncientOfWar")) {
+                                                System.out.println("Debes construir un Ancient Of War para entrenar una Huntress");
                                                 break;
+                                            } else {
+                                                if(validarCosto(CostoUnidades.getCosto("huntress"))){
+                                                    unidadesEnProceso.add(factoryUnidad.getUnidad("huntress")); 
+                                                    descontarCosto(CostoUnidades.getCosto("huntress"));
+                                                    break;
+                                                } else {
+                                                    System.out.println("No tienes suficientes recursos para entrenar una Huntress");
+                                                }                                  
                                             }
-                                            System.out.println("No tienes suficientes recursos para entrenar una Huntress");
                                             break;
+                                            
                                         case 3:
-                                            if(validarCosto(CostoUnidades.getCosto("warden"))){
-                                                unidadesEnProceso.add(factoryUnidad.getUnidad("warden")); 
-                                                descontarCosto(CostoUnidades.getCosto("warden"));
-                                                break;
+                                            if(revisarSpecialist("warden")) {
+                                                System.out.println("Solo se puede tener un Warden a la vez");
                                             }
-                                            System.out.println("No tienes suficientes recursos para entrenar un Warden");
+                                            else {
+                                                if(!revisarEstructura("TreeOfLife")) {
+                                                System.out.println("Debes construir un Tree Of Life para entrenar un Warden");
+                                                break;
+                                                } else {
+                                                    if(validarCosto(CostoUnidades.getCosto("warden"))){
+                                                        unidadesEnProceso.add(factoryUnidad.getUnidad("warden")); 
+                                                        descontarCosto(CostoUnidades.getCosto("warden"));
+                                                        break;
+                                                    } else {
+                                                        System.out.println("No tienes suficientes recursos para entrenar un Warden");
+                                                    }                                  
+                                                }
+                                            }
                                             break;
+                                            
+                                    }
+                                    break;
+                                    
+                                case "orcos":
+                                    menuUnidadesOrco();                                   
+                                    opcTer = leer.nextInt();
+                                    System.out.println("\n");
+                                    switch(opcTer) {
+                                        case 1:
+                                            if(!revisarEstructura("GreatHall")) {
+                                                System.out.println("Debes construir un Great Hall para entrenar un Grunt");
+                                                break;
+                                            } else {
+                                                if(validarCosto(CostoUnidades.getCosto("grunt"))){
+                                                    unidadesEnProceso.add(factoryUnidad.getUnidad("grunt")); 
+                                                    descontarCosto(CostoUnidades.getCosto("grunt"));
+                                                    break;
+                                                } else {
+                                                    System.out.println("No tienes suficientes recursos para entrenar un Grunt");
+                                                }                                  
+                                            }
+                                            break;                                           
+
+                                        case 2:
+                                            if(!revisarEstructura("VoodooLounge")) {
+                                                System.out.println("Debes construir un Voodoo Lounge para entrenar un Shaman");
+                                                break;
+                                            } else {
+                                                if(validarCosto(CostoUnidades.getCosto("shaman"))){
+                                                    unidadesEnProceso.add(factoryUnidad.getUnidad("shaman")); 
+                                                    descontarCosto(CostoUnidades.getCosto("shaman"));
+                                                    break;
+                                                } else {
+                                                    System.out.println("No tienes suficientes recursos para entrenar un Shaman");
+                                                }                                  
+                                            }
+                                            break;
+                                            
+                                        case 3:
+                                            if(revisarSpecialist("blademaster")) {
+                                                System.out.println("Solo se puede tener un Blademaster a la vez");
+                                            }
+                                            else {
+                                                if(!revisarEstructura("SpiritLodge")) {
+                                                System.out.println("Debes construir un Spirit Lodge para entrenar un Blademaster");
+                                                break;
+                                                } else {
+                                                    if(validarCosto(CostoUnidades.getCosto("blademaster"))){
+                                                        unidadesEnProceso.add(factoryUnidad.getUnidad("blademaster")); 
+                                                        descontarCosto(CostoUnidades.getCosto("blademaster"));
+                                                        break;
+                                                    } else {
+                                                        System.out.println("No tienes suficientes recursos para entrenar un Blademaster");
+                                                    }                                  
+                                                }
+                                            }
+                                            break;
+                                            
+                                    }
+                                    break;
+                                    
+                                case "undead":
+                                    menuUnidadesUndead();                                   
+                                    opcTer = leer.nextInt();
+                                    System.out.println("\n");
+                                    switch(opcTer) {
+                                        case 1:
+                                            if(!revisarEstructura("Necropolis")) {
+                                                System.out.println("Debes construir una Necropolis para entrenar un Acolyte");
+                                                break;
+                                            } else {
+                                                if(validarCosto(CostoUnidades.getCosto("acolyte"))){
+                                                    unidadesEnProceso.add(factoryUnidad.getUnidad("acolyte")); 
+                                                    descontarCosto(CostoUnidades.getCosto("acolyte"));
+                                                    break;
+                                                } else {
+                                                    System.out.println("No tienes suficientes recursos para entrenar un Acolyte");
+                                                }                                  
+                                            }
+                                            break;                                           
+
+                                        case 2:
+                                            if(!revisarEstructura("Crypt")) {
+                                                System.out.println("Debes construir una Crypt para entrenar un Necromancer");
+                                                break;
+                                            } else {
+                                                if(validarCosto(CostoUnidades.getCosto("necromancer"))){
+                                                    unidadesEnProceso.add(factoryUnidad.getUnidad("necromancer")); 
+                                                    descontarCosto(CostoUnidades.getCosto("necromancer"));
+                                                    break;
+                                                } else {
+                                                    System.out.println("No tienes suficientes recursos para entrenar un Necromancer");
+                                                }                                  
+                                            }
+                                            break;
+                                            
+                                        case 3:
+                                            if(revisarSpecialist("deathknight")) {
+                                                System.out.println("Solo se puede tener un Death Knight a la vez");
+                                            }
+                                            else {
+                                                if(!revisarEstructura("SacrificialPit")) {
+                                                System.out.println("Debes construir un Sacrificial Pit para entrenar un Death Knight");
+                                                break;
+                                                } else {
+                                                    if(validarCosto(CostoUnidades.getCosto("deathknight"))){
+                                                        unidadesEnProceso.add(factoryUnidad.getUnidad("deathknight")); 
+                                                        descontarCosto(CostoUnidades.getCosto("deathknight"));
+                                                        break;
+                                                    } else {
+                                                        System.out.println("No tienes suficientes recursos para entrenar un Death Knight");
+                                                    }                                  
+                                                }
+                                            }
+                                            break;
+                                            
                                     }
                                     break;
                             }
@@ -355,9 +678,9 @@ public class Jugador {
         System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
         System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
         System.out.print("\n");
-        System.out.println("1.) Militia (Requiere: Barracks)");
-        System.out.println("2.) Footman (Requiere: Barracks");
-        System.out.println("3.) Paladin - Specialist (Requiere: Sanctuary)");
+        System.out.println("1.) Militia (Requiere: Barracks) - Costo(Oro: " + CostoUnidades.getCostoMilitia().getOro() + " Madera: " + CostoUnidades.getCostoMilitia().getMadera() + " Metal: " + CostoUnidades.getCostoMilitia().getMetal() + ")");
+        System.out.println("2.) Footman (Requiere: Barracks) - Costo(Oro: " + CostoUnidades.getCostoFootman().getOro() + " Madera: " + CostoUnidades.getCostoFootman().getMadera() + " Metal: " + CostoUnidades.getCostoFootman().getMetal() + ")");
+        System.out.println("3.) Paladin - Specialist (Requiere: Sanctuary) - Costo(Oro: " + CostoUnidades.getCostoPaladin().getOro() + " Madera: " + CostoUnidades.getCostoPaladin().getMadera() + " Metal: " + CostoUnidades.getCostoPaladin().getMetal() + ")");
         System.out.println("4.) Atras");
         System.out.print("Elija una opcion: ");
     }
@@ -366,12 +689,12 @@ public class Jugador {
         System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
         System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
         System.out.print("\n");
-        System.out.println("1.) Mine");
-        System.out.println("2.) Sawmill");
-        System.out.println("3.) Forge");
-        System.out.println("4.) Barracks");
-        System.out.println("5.) Sanctuary");
-        System.out.println("6.) Workshop");
+        System.out.println("1.) Mine - Costo(Oro: " + CostoEstructuras.getCostoMine().getOro() + " Madera: " + CostoEstructuras.getCostoMine().getMadera() + " Metal: " + CostoEstructuras.getCostoMine().getMetal() + ")");
+        System.out.println("2.) Sawmill - Costo(Oro: " + CostoEstructuras.getCostoSawmill().getOro() + " Madera: " + CostoEstructuras.getCostoSawmill().getMadera() + " Metal: " + CostoEstructuras.getCostoSawmill().getMetal() + ")");
+        System.out.println("3.) Forge - Costo(Oro: " + CostoEstructuras.getCostoForge().getOro() + " Madera: " + CostoEstructuras.getCostoForge().getMadera() + " Metal: " + CostoEstructuras.getCostoForge().getMetal() + ")");
+        System.out.println("4.) Barracks - Costo(Oro: " + CostoEstructuras.getCostoBarracks().getOro() + " Madera: " + CostoEstructuras.getCostoBarracks().getMadera() + " Metal: " + CostoEstructuras.getCostoBarracks().getMetal() + ")");
+        System.out.println("5.) Sanctuary - Costo(Oro: " + CostoEstructuras.getCostoSanctuary().getOro() + " Madera: " + CostoEstructuras.getCostoSanctuary().getMadera() + " Metal: " + CostoEstructuras.getCostoSanctuary().getMetal() + ")");
+        System.out.println("6.) Workshop - Costo(Oro: " + CostoEstructuras.getCostoWorkshop().getOro() + " Madera: " + CostoEstructuras.getCostoWorkshop().getMadera() + " Metal: " + CostoEstructuras.getCostoWorkshop().getMetal() + ")");
         System.out.println("7.) Atras");
         System.out.print("Elija una opcion: ");
     }
@@ -380,10 +703,74 @@ public class Jugador {
         System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
         System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
         System.out.print("\n");
-        System.out.println("1.) Druid");
-        System.out.println("2.) Huntress");
-        System.out.println("3.) Warden - Specialist");
+        System.out.println("1.) Druid (Requiere: Ancient of Lore) - Costo(Oro: " + CostoUnidades.getCostoDruid().getOro() + " Madera: " + CostoUnidades.getCostoDruid().getMadera() + " Metal: " + CostoUnidades.getCostoDruid().getMetal() + ")");
+        System.out.println("2.) Huntress (Requiere: Ancient of War) - Costo(Oro: " + CostoUnidades.getCostoHuntress().getOro() + " Madera: " + CostoUnidades.getCostoHuntress().getMadera() + " Metal: " + CostoUnidades.getCostoHuntress().getMetal() + ")");
+        System.out.println("3.) Warden - Specialist (Requiere: Tree of Life) - Costo(Oro: " + CostoUnidades.getCostoWarden().getOro() + " Madera: " + CostoUnidades.getCostoWarden().getMadera() + " Metal: " + CostoUnidades.getCostoWarden().getMetal() + ")");
         System.out.println("4.) Atras");
+        System.out.print("Elija una opcion: ");
+    }
+    
+    public void menuEstructurasElfo() {
+        System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
+        System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
+        System.out.print("\n");
+        System.out.println("1.) Mine - Costo(Oro: " + CostoEstructuras.getCostoMine().getOro() + " Madera: " + CostoEstructuras.getCostoMine().getMadera() + " Metal: " + CostoEstructuras.getCostoMine().getMetal() + ")");
+        System.out.println("2.) Sawmill - Costo(Oro: " + CostoEstructuras.getCostoSawmill().getOro() + " Madera: " + CostoEstructuras.getCostoSawmill().getMadera() + " Metal: " + CostoEstructuras.getCostoSawmill().getMetal() + ")");
+        System.out.println("3.) Forge - Costo(Oro: " + CostoEstructuras.getCostoForge().getOro() + " Madera: " + CostoEstructuras.getCostoForge().getMadera() + " Metal: " + CostoEstructuras.getCostoForge().getMetal() + ")");
+        System.out.println("4.) Ancient of Lore - Costo(Oro: " + CostoEstructuras.getCostoAncientOfLore().getOro() + " Madera: " + CostoEstructuras.getCostoAncientOfLore().getMadera() + " Metal: " + CostoEstructuras.getCostoAncientOfLore().getMetal() + ")");
+        System.out.println("5.) Ancient of War - Costo(Oro: " + CostoEstructuras.getCostoAncientOfWar().getOro() + " Madera: " + CostoEstructuras.getCostoAncientOfWar().getMadera() + " Metal: " + CostoEstructuras.getCostoAncientOfWar().getMetal() + ")");
+        System.out.println("6.) Tree of Life - Costo(Oro: " + CostoEstructuras.getCostoTreeOfLife().getOro() + " Madera: " + CostoEstructuras.getCostoTreeOfLife().getMadera() + " Metal: " + CostoEstructuras.getCostoTreeOfLife().getMetal() + ")");
+        System.out.println("7.) Atras");
+        System.out.print("Elija una opcion: ");
+    }
+    
+    public void menuUnidadesOrco() {
+        System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
+        System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
+        System.out.print("\n");
+        System.out.println("1.) Grunt (Requiere: Great Hall) - Costo(Oro: " + CostoUnidades.getCostoGrunt().getOro() + " Madera: " + CostoUnidades.getCostoGrunt().getMadera() + " Metal: " + CostoUnidades.getCostoGrunt().getMetal() + ")");
+        System.out.println("2.) Shaman (Requiere: Voodoo Lounge) - Costo(Oro: " + CostoUnidades.getCostoShaman().getOro() + " Madera: " + CostoUnidades.getCostoShaman().getMadera() + " Metal: " + CostoUnidades.getCostoShaman().getMetal() + ")");
+        System.out.println("3.) Blademaster - Specialist (Requiere: Spirit Lodge) - Costo(Oro: " + CostoUnidades.getCostoBlademaster().getOro() + " Madera: " + CostoUnidades.getCostoBlademaster().getMadera() + " Metal: " + CostoUnidades.getCostoBlademaster().getMetal() + ")");
+        System.out.println("4.) Atras");
+        System.out.print("Elija una opcion: ");
+    }
+    
+    public void menuEstructurasOrco() {
+        System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
+        System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
+        System.out.print("\n");
+        System.out.println("1.) Mine - Costo(Oro: " + CostoEstructuras.getCostoMine().getOro() + " Madera: " + CostoEstructuras.getCostoMine().getMadera() + " Metal: " + CostoEstructuras.getCostoMine().getMetal() + ")");
+        System.out.println("2.) Sawmill - Costo(Oro: " + CostoEstructuras.getCostoSawmill().getOro() + " Madera: " + CostoEstructuras.getCostoSawmill().getMadera() + " Metal: " + CostoEstructuras.getCostoSawmill().getMetal() + ")");
+        System.out.println("3.) Forge - Costo(Oro: " + CostoEstructuras.getCostoForge().getOro() + " Madera: " + CostoEstructuras.getCostoForge().getMadera() + " Metal: " + CostoEstructuras.getCostoForge().getMetal() + ")");
+        System.out.println("4.) Great Hall - Costo(Oro: " + CostoEstructuras.getCostoGreatHall().getOro() + " Madera: " + CostoEstructuras.getCostoGreatHall().getMadera() + " Metal: " + CostoEstructuras.getCostoGreatHall().getMetal() + ")");
+        System.out.println("5.) Voodoo Lounge - Costo(Oro: " + CostoEstructuras.getCostoVoodooLounge().getOro() + " Madera: " + CostoEstructuras.getCostoVoodooLounge().getMadera() + " Metal: " + CostoEstructuras.getCostoVoodooLounge().getMetal() + ")");
+        System.out.println("6.) Spirit Lodge - Costo(Oro: " + CostoEstructuras.getCostoSpiritLodge().getOro() + " Madera: " + CostoEstructuras.getCostoSpiritLodge().getMadera() + " Metal: " + CostoEstructuras.getCostoSpiritLodge().getMetal() + ")");
+        System.out.println("7.) Atras");
+        System.out.print("Elija una opcion: ");
+    }
+    
+    public void menuUnidadesUndead() {
+        System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
+        System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
+        System.out.print("\n");
+        System.out.println("1.) Acolyte (Requiere: Necropolis) - Costo(Oro: " + CostoUnidades.getCostoAcolyte().getOro() + " Madera: " + CostoUnidades.getCostoAcolyte().getMadera() + " Metal: " + CostoUnidades.getCostoAcolyte().getMetal() + ")");
+        System.out.println("2.) Necromancer (Requiere: Crypt) - Costo(Oro: " + CostoUnidades.getCostoNecromancer().getOro() + " Madera: " + CostoUnidades.getCostoNecromancer().getMadera() + " Metal: " + CostoUnidades.getCostoNecromancer().getMetal() + ")");
+        System.out.println("3.) Death Knight - Specialist (Requiere: Sacrificial Pit) - Costo(Oro: " + CostoUnidades.getCostoDeathKnight().getOro() + " Madera: " + CostoUnidades.getCostoDeathKnight().getMadera() + " Metal: " + CostoUnidades.getCostoDeathKnight().getMetal() + ")");
+        System.out.println("4.) Atras");
+        System.out.print("Elija una opcion: ");
+    }
+    
+    public void menuEstructurasUndead() {
+        System.out.println("====== Fase " + Main.fase + " ==========" + "Turno de " + nombre + "======== " + this.raza.toUpperCase() +" =======");
+        System.out.println("Oro: " + oro + "\t" + "Madera: " + madera + "\t" + "\t" + "Metal: " + metal);
+        System.out.print("\n");
+        System.out.println("1.) Mine - Costo(Oro: " + CostoEstructuras.getCostoMine().getOro() + " Madera: " + CostoEstructuras.getCostoMine().getMadera() + " Metal: " + CostoEstructuras.getCostoMine().getMetal() + ")");
+        System.out.println("2.) Sawmill - Costo(Oro: " + CostoEstructuras.getCostoSawmill().getOro() + " Madera: " + CostoEstructuras.getCostoSawmill().getMadera() + " Metal: " + CostoEstructuras.getCostoSawmill().getMetal() + ")");
+        System.out.println("3.) Forge - Costo(Oro: " + CostoEstructuras.getCostoForge().getOro() + " Madera: " + CostoEstructuras.getCostoForge().getMadera() + " Metal: " + CostoEstructuras.getCostoForge().getMetal() + ")");
+        System.out.println("4.) Necropolis - Costo(Oro: " + CostoEstructuras.getCostoNecropolis().getOro() + " Madera: " + CostoEstructuras.getCostoNecropolis().getMadera() + " Metal: " + CostoEstructuras.getCostoNecropolis().getMetal() + ")");
+        System.out.println("5.) Crypt - Costo(Oro: " + CostoEstructuras.getCostoCrypt().getOro() + " Madera: " + CostoEstructuras.getCostoCrypt().getMadera() + " Metal: " + CostoEstructuras.getCostoCrypt().getMetal() + ")");
+        System.out.println("6.) Sacrificial Pit - Costo(Oro: " + CostoEstructuras.getCostoSacrificialPit().getOro() + " Madera: " + CostoEstructuras.getCostoSacrificialPit().getMadera() + " Metal: " + CostoEstructuras.getCostoSacrificialPit().getMetal() + ")");
+        System.out.println("7.) Atras");
         System.out.print("Elija una opcion: ");
     }
     
@@ -443,6 +830,52 @@ public class Jugador {
                 System.out.println("Druid: " + u1);
                 System.out.println("Huntress: " + u2);
                 System.out.println("Warden: " + u3);
+                break;
+                
+            case "undead":
+                for(Unidad u : Unidades){
+                    if(u.getNombre() != null) {
+                        switch(u.getNombre()) {
+                            case "acolyte":
+                                u1 += 1;
+                                break;
+                            case "necromancer":
+                                u2 += 1;
+                                break;
+                            case "deathknight":
+                                u3 += 1;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                System.out.println("Acolyte: " + u1);
+                System.out.println("Necromancer: " + u2);
+                System.out.println("Death Knight: " + u3);
+                break;
+                
+            case "orcos":
+                for(Unidad u : Unidades){
+                    if(u.getNombre() != null) {
+                        switch(u.getNombre()) {
+                            case "grunt":
+                                u1 += 1;
+                                break;
+                            case "shaman":
+                                u2 += 1;
+                                break;
+                            case "blademaster":
+                                u3 += 1;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                System.out.println("Grunt: " + u1);
+                System.out.println("Shaman: " + u2);
+                System.out.println("Blademaster: " + u3);
                 break;
             
             default:

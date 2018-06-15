@@ -12,6 +12,12 @@ package Fabricas.Estructuras;
 public class TownCenter implements Estructura{
     private String nombre = "Town Center";
     private int vida = 2000, nivel = 1;
+    private int oroMax = 10000, maderaMax = 5000, metalMax = 3000;
+    
+    @Override
+    public Integer getNivel() {
+        return this.nivel;
+    }
     
    @Override
     public Integer getRecursoGenerado(){

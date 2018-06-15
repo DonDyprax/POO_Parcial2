@@ -11,7 +11,7 @@ import Fabricas.Estructuras.Estructura;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class SacrificialPit implements Estructura{
-    private String nombre = "SacrificialPit";
+    private String nombre = "Sacrificial Pit";
     private int vida, faseCreacion, tiempoCreacion = 2;
     
     public SacrificialPit(int fase){
@@ -36,6 +36,11 @@ public class SacrificialPit implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public void setVida(int vida){
+        this.vida = vida;
     }
     
     @Override

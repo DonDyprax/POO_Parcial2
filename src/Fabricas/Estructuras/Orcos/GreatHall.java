@@ -11,7 +11,7 @@ import Fabricas.Estructuras.Estructura;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class GreatHall implements Estructura{
-    private String nombre = "GreatHall";
+    private String nombre = "Great Hall";
     private int vida, faseCreacion, tiempoCreacion = 2;
     
     public GreatHall(int fase){
@@ -36,6 +36,11 @@ public class GreatHall implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public void setVida(int vida){
+        this.vida = vida;
     }
     
     @Override

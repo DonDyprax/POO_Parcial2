@@ -11,7 +11,7 @@ package Fabricas.Estructuras;
  */
 public class Mine implements Estructura{
     private String nombre = "Mine";
-    private int vida = 600, faseCreacion, tiempoCreacion = 1, oroGenerado = 40;
+    private int vida = 600, faseCreacion, tiempoCreacion = 1, oroGenerado = 300;
     
     public Mine(int fase){
         this.faseCreacion = fase;
@@ -35,6 +35,11 @@ public class Mine implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public void setVida(int vida){
+        this.vida = vida;
     }
     
     @Override

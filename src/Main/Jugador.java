@@ -25,13 +25,15 @@ public class Jugador {
     AbstractFactory factoryUnidad = FactoryProducer.getFactory("unidad");
     AbstractFactory factoryEstructura = FactoryProducer.getFactory("estructura");
     private Jugador otroJugador;
-    private String nombre, raza;
+    private Integer opcAtqE;
+    private String nombre, raza, unidadAtacando;
     private int oro, madera, metal;
     private int oroTemp = 0, maderaTemp = 0, metalTemp = 0;
     private ArrayList<Estructura> Estructuras = new ArrayList<>();
     private ArrayList<Unidad> Unidades = new ArrayList<>();
     private ArrayList<Unidad> unidadesEnProceso = new ArrayList<>();
     private ArrayList<Estructura> estructurasEnProceso = new ArrayList<>();
+    private ArrayList<Unidad> unidadesEnAtaque = new ArrayList<>();
 
     public ArrayList<Estructura> getEstructuras() {
         return Estructuras;
@@ -45,18 +47,29 @@ public class Jugador {
 
         Estructuras.add(factoryEstructura.getEstructura("townCenter"));
 
-        this.oro = 200;
-        this.madera = 200;
-        this.metal = 200;
+        this.oro = 1000;
+        this.madera = 500;
+        this.metal = 300;
     }
 
     public void realizarTurno() {
-        int opc = 0, opcSec, opcTer;
+        int opc = 0, opcSec, opcTer, opcAtqU;
         Scanner leer = new Scanner(System.in);
         
         
         Iterator<Unidad> itU = unidadesEnProceso.iterator();
         Iterator<Estructura> itE = estructurasEnProceso.iterator();
+       
+        if(opcAtqE != null){
+            if(!otroJugador.unidadesEnAtaque.isEmpty()){
+                for(int i = 0 ; i < otroJugador.unidadesEnAtaque.size() ; i++){
+                    if(Main.fase >= otroJugador.unidadesEnAtaque.get(i).getFaseAtaque() + 2) {
+                        otroJugador.unidadesEnAtaque.get(i).atacar(Estructuras.get(this.opcAtqE - 1));
+                    }
+                }
+            }
+        }
+        
         
         if(!Estructuras.isEmpty()){
             for(Estructura e : Estructuras){
@@ -367,7 +380,7 @@ public class Jugador {
                             
                         case 2:
                             System.out.println("Mostrar Estructuras");
-                            System.out.println(Estructuras);
+                            mostrarEstructuras();
                             System.out.println("\n");
                             break;
                         case 3:
@@ -467,7 +480,7 @@ public class Jugador {
                                     System.out.println("\n");
                                     switch(opcTer) {
                                         case 1:
-                                            if(!revisarEstructura("AncientOfLore")) {
+                                            if(!revisarEstructura("Ancient Of Lore")) {
                                                 System.out.println("Debes construir un Ancient Of Lore para entrenar un Druid");
                                                 break;
                                             } else {
@@ -482,7 +495,7 @@ public class Jugador {
                                             break;                                           
 
                                         case 2:
-                                            if(!revisarEstructura("AncientOfWar")) {
+                                            if(!revisarEstructura("Ancient Of War")) {
                                                 System.out.println("Debes construir un Ancient Of War para entrenar una Huntress");
                                                 break;
                                             } else {
@@ -501,7 +514,7 @@ public class Jugador {
                                                 System.out.println("Solo se puede tener un Warden a la vez");
                                             }
                                             else {
-                                                if(!revisarEstructura("TreeOfLife")) {
+                                                if(!revisarEstructura("Tree Of Life")) {
                                                 System.out.println("Debes construir un Tree Of Life para entrenar un Warden");
                                                 break;
                                                 } else {
@@ -525,7 +538,7 @@ public class Jugador {
                                     System.out.println("\n");
                                     switch(opcTer) {
                                         case 1:
-                                            if(!revisarEstructura("GreatHall")) {
+                                            if(!revisarEstructura("Great Hall")) {
                                                 System.out.println("Debes construir un Great Hall para entrenar un Grunt");
                                                 break;
                                             } else {
@@ -540,7 +553,7 @@ public class Jugador {
                                             break;                                           
 
                                         case 2:
-                                            if(!revisarEstructura("VoodooLounge")) {
+                                            if(!revisarEstructura("Voodoo Lounge")) {
                                                 System.out.println("Debes construir un Voodoo Lounge para entrenar un Shaman");
                                                 break;
                                             } else {
@@ -559,7 +572,7 @@ public class Jugador {
                                                 System.out.println("Solo se puede tener un Blademaster a la vez");
                                             }
                                             else {
-                                                if(!revisarEstructura("SpiritLodge")) {
+                                                if(!revisarEstructura("Spirit Lodge")) {
                                                 System.out.println("Debes construir un Spirit Lodge para entrenar un Blademaster");
                                                 break;
                                                 } else {
@@ -617,7 +630,7 @@ public class Jugador {
                                                 System.out.println("Solo se puede tener un Death Knight a la vez");
                                             }
                                             else {
-                                                if(!revisarEstructura("SacrificialPit")) {
+                                                if(!revisarEstructura("Sacrificial Pit")) {
                                                 System.out.println("Debes construir un Sacrificial Pit para entrenar un Death Knight");
                                                 break;
                                                 } else {
@@ -648,6 +661,79 @@ public class Jugador {
                             }
                             else{
                                 mostrarEstructurasEnemigas(otroJugador);
+                                System.out.print("Que estructura desea atacar?: ");
+                                this.opcAtqE = leer.nextInt();
+                                
+                                System.out.println("=======================================");
+                                mostrarUnidades();
+                                System.out.print("Con que unidades desea atacar?: ");
+                                opcAtqU = leer.nextInt();
+                                switch(this.raza){
+                                    case "humanos":
+                                        switch(opcAtqU){
+                                            case 1:
+                                                unidadAtacando = "militia";
+                                                break;
+                                            case 2:
+                                                unidadAtacando = "footman";
+                                                break;
+                                            case 3:
+                                                unidadAtacando = "paladin";
+                                                break;
+                                        }
+                                        break;
+                                    case "elfos":
+                                        switch(opcAtqU){
+                                            case 1:
+                                                unidadAtacando = "druid";
+                                                break;
+                                            case 2:
+                                                unidadAtacando = "huntress";
+                                                break;
+                                            case 3:
+                                                unidadAtacando = "warden";
+                                                break;
+                                        }
+                                        break;
+                                    case "orcos":
+                                        switch(opcAtqU){
+                                            case 1:
+                                                unidadAtacando = "grunt";
+                                                break;
+                                            case 2:
+                                                unidadAtacando = "shaman";
+                                                break;
+                                            case 3:
+                                                unidadAtacando = "blademaster";
+                                                break;
+                                        }
+                                        break;
+                                    case "undead":
+                                        switch(opcAtqU){
+                                            case 1:
+                                                unidadAtacando = "acolyte";
+                                                break;
+                                            case 2:
+                                                unidadAtacando = "necromancer";
+                                                break;
+                                            case 3:
+                                                unidadAtacando = "deathknight";
+                                                break;
+                                        }
+                                        break;
+                                }
+                                
+                                if(!Unidades.isEmpty()){
+                                    for(Iterator<Unidad> iterador = Unidades.iterator(); iterador.hasNext(); ) {
+                                        Unidad unidad = iterador.next();
+                                        if(unidadAtacando.equals(unidad.getNombre())){
+                                            unidadesEnAtaque.add(unidad); 
+                                            unidad.setFaseAtaque(Main.fase);
+                                            iterador.remove();
+                                        }
+                                    }
+                                    System.out.println("Se han enviado tropas a atacar al enemigo");
+                                }
                             }
                             break;
                         case 4:
@@ -774,6 +860,13 @@ public class Jugador {
         System.out.print("Elija una opcion: ");
     }
     
+    public void mostrarEstructuras(){
+        System.out.println("====================== Estructuras de " + this.nombre + " ======================");
+        for(int i = 0 ; i < Estructuras.size() ; i++ ) {
+            System.out.println(i+1 + ".) " + Estructuras.get(i).getNombre() + " - Vida Restante: " + Estructuras.get(i).getVida());
+        }
+    }
+    
     public void recolectarRecursos(){
         this.oro += this.oroTemp;
         this.oroTemp = 0;
@@ -804,9 +897,9 @@ public class Jugador {
                         }
                     }
                 }
-                System.out.println("Militia: " + u1);
-                System.out.println("Footman: " + u2);
-                System.out.println("Paladin: " + u3);
+                System.out.println("1.) Militia: " + u1);
+                System.out.println("2.) Footman: " + u2);
+                System.out.println("3.) Paladin: " + u3);
                 break;
             
             case "elfos":
@@ -827,9 +920,9 @@ public class Jugador {
                         }
                     }
                 }
-                System.out.println("Druid: " + u1);
-                System.out.println("Huntress: " + u2);
-                System.out.println("Warden: " + u3);
+                System.out.println("1.) Druid: " + u1);
+                System.out.println("2.) Huntress: " + u2);
+                System.out.println("3.) Warden: " + u3);
                 break;
                 
             case "undead":
@@ -850,9 +943,9 @@ public class Jugador {
                         }
                     }
                 }
-                System.out.println("Acolyte: " + u1);
-                System.out.println("Necromancer: " + u2);
-                System.out.println("Death Knight: " + u3);
+                System.out.println("1.) Acolyte: " + u1);
+                System.out.println("2.) Necromancer: " + u2);
+                System.out.println("3.) Death Knight: " + u3);
                 break;
                 
             case "orcos":
@@ -873,9 +966,9 @@ public class Jugador {
                         }
                     }
                 }
-                System.out.println("Grunt: " + u1);
-                System.out.println("Shaman: " + u2);
-                System.out.println("Blademaster: " + u3);
+                System.out.println("1.) Grunt: " + u1);
+                System.out.println("2.) Shaman: " + u2);
+                System.out.println("3.) Blademaster: " + u3);
                 break;
             
             default:
@@ -888,7 +981,6 @@ public class Jugador {
         for(int i = 0 ; i < jugador.getEstructuras().size() ; i++ ) {
             System.out.println(i+1 + ".) " + jugador.getEstructuras().get(i).getNombre() + " - Vida Restante: " + jugador.getEstructuras().get(i).getVida());
         }
-        System.out.println("==================================================================");
     }
 
     public int getOro() {

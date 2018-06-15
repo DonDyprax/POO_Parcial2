@@ -11,7 +11,7 @@ import Fabricas.Estructuras.Estructura;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class AncientOfWar implements Estructura{
-    private String nombre = "AncientOfWar";
+    private String nombre = "Ancient Of War";
     private int vida, faseCreacion, tiempoCreacion = 2;
     
     public AncientOfWar(int fase){
@@ -36,6 +36,11 @@ public class AncientOfWar implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public void setVida(int vida){
+        this.vida = vida;
     }
     
     @Override

@@ -39,6 +39,11 @@ public class Sanctuary implements Estructura{
     }
     
     @Override
+    public void setVida(int vida){
+        this.vida = vida;
+    }
+    
+    @Override
     public Integer getFaseCreacion() {
         return faseCreacion;
     }

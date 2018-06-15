@@ -11,7 +11,7 @@ package Fabricas.Estructuras;
  */
 public class Sawmill implements Estructura{
     private String nombre = "Sawmill";
-    private int vida = 400, faseCreacion, tiempoCreacion = 1, maderaGenerada = 40;
+    private int vida = 400, faseCreacion, tiempoCreacion = 1, maderaGenerada = 200;
     
     public Sawmill(int fase){
         this.faseCreacion = fase;
@@ -35,6 +35,11 @@ public class Sawmill implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public void setVida(int vida){
+        this.vida = vida;
     }
     
     @Override

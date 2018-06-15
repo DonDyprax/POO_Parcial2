@@ -11,7 +11,7 @@ import Fabricas.Estructuras.Estructura;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class SpiritLodge implements Estructura{
-    private String nombre = "SpiritLodge";
+    private String nombre = "Spirit Lodge";
     private int vida, faseCreacion, tiempoCreacion = 2;
     
     public SpiritLodge(int fase){
@@ -36,6 +36,11 @@ public class SpiritLodge implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public void setVida(int vida){
+        this.vida = vida;
     }
     
     @Override

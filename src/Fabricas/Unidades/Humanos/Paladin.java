@@ -16,7 +16,7 @@ import Main.Main;
  */
 public class Paladin implements Unidad{
     private final String nombre = "paladin";
-    private int vida, ataqueEstructura, ataqueUnidad;
+    private int vida, ataqueEstructura, ataqueUnidad = 50;
     private int faseCreacion, faseAtaque, tiempoCreacion = 3;
     
     public Paladin(int fase) {
@@ -24,9 +24,13 @@ public class Paladin implements Unidad{
     }
     
     @Override
+    public void setFaseAtaque(int fase){
+        this.faseAtaque = fase;
+    }
+    
+    @Override
     public void atacar(Estructura estructura){
-        this.faseAtaque = Main.fase;
-                
+        estructura.setVida(estructura.getVida() - this.ataqueEstructura);
     }
     
     @Override

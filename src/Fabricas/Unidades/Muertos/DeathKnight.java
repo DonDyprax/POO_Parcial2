@@ -16,7 +16,7 @@ import Main.Main;
  */
 public class DeathKnight implements Unidad{
     private final String nombre = "deathknight";
-    private int vida, ataqueEstructura, ataqueUnidad;
+    private int vida, ataqueEstructura, ataqueUnidad = 50;
     private int faseCreacion, faseAtaque, tiempoCreacion = 3;
     
     public DeathKnight(int fase) {
@@ -24,9 +24,13 @@ public class DeathKnight implements Unidad{
     }
     
     @Override
+    public void setFaseAtaque(int fase){
+        this.faseAtaque = fase;
+    }
+    
+    @Override
     public void atacar(Estructura estructura){
-        this.faseAtaque = Main.fase;
-                
+        estructura.setVida(estructura.getVida() - this.ataqueEstructura);
     }
     
     @Override

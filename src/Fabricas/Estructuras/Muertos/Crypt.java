@@ -34,6 +34,11 @@ public class Crypt implements Estructura{
     }
     
     @Override
+    public void setVida(int vida){
+        this.vida = vida;
+    }
+    
+    @Override
     public int getVida(){
         return this.vida;
     }

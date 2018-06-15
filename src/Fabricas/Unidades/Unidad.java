@@ -18,4 +18,5 @@ public interface Unidad {
     int getFaseCreacion();
     int getTiempoCreacion();
     int getFaseAtaque();
+    void setFaseAtaque(int fase);
 }

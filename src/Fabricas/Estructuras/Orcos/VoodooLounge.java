@@ -11,7 +11,7 @@ import Fabricas.Estructuras.Estructura;
  * @author Juan Pablo Acosta <DonDyprax at github.com>
  */
 public class VoodooLounge implements Estructura{
-    private String nombre = "VoodooLounge";
+    private String nombre = "Voodoo Lounge";
     private int vida, faseCreacion, tiempoCreacion = 2;
     
     public VoodooLounge(int fase){
@@ -36,6 +36,11 @@ public class VoodooLounge implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public void setVida(int vida){
+        this.vida = vida;
     }
     
     @Override

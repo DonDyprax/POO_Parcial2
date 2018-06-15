@@ -16,4 +16,5 @@ public interface Estructura {
     Integer getTiempoCreacion();
     Integer getRecursoGenerado();
     Integer getNivel();
+    void setVida(int vida);
 }

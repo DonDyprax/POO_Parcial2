@@ -16,17 +16,21 @@ import Main.Main;
  */
 public class Warden implements Unidad{
     private final String nombre = "warden";
-    private int vida, ataqueUnidad, ataqueEstructura;
+    private int vida, ataqueUnidad, ataqueEstructura = 50;
     private int faseCreacion, faseAtaque, tiempoCreacion = 3;
     
     public Warden(int fase) {
         this.faseCreacion = fase;
     }
 
+    @Override
+    public void setFaseAtaque(int fase){
+        this.faseAtaque = fase;
+    }
     
     @Override
     public void atacar(Estructura estructura){
-        this.faseAtaque = Main.fase;
+        estructura.setVida(estructura.getVida() - this.ataqueEstructura);
     }
     
     @Override

@@ -13,7 +13,7 @@ package Fabricas.Estructuras;
  */
 public class Forge implements Estructura{
     private String nombre = "Forge";
-    private int vida = 500, faseCreacion, tiempoCreacion = 1, metalGenerado = 40;
+    private int vida = 500, faseCreacion, tiempoCreacion = 1, metalGenerado = 100;
     
     public Forge(int fase){
         this.faseCreacion = fase;
@@ -38,6 +38,11 @@ public class Forge implements Estructura{
     @Override
     public int getVida(){
         return this.vida;
+    }
+    
+    @Override
+    public void setVida(int vida){
+        this.vida = vida;
     }
     
     @Override

@@ -16,7 +16,7 @@ import Main.Main;
  */
 public class Acolyte implements Unidad{
     private final String nombre = "acolyte";
-    private int vida, ataqueUnidad, ataqueEstructura;
+    private int vida, ataqueUnidad, ataqueEstructura = 50;
     private int faseCreacion, faseAtaque, tiempoCreacion = 1;
     
     public Acolyte(int fase) {
@@ -24,8 +24,13 @@ public class Acolyte implements Unidad{
     }
     
     @Override
+    public void setFaseAtaque(int fase){
+        this.faseAtaque = fase;
+    }
+    
+    @Override
     public void atacar(Estructura estructura){
-        this.faseAtaque = Main.fase;
+        estructura.setVida(estructura.getVida() - this.ataqueEstructura);
     }
 
     @Override
